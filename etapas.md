@@ -143,20 +143,44 @@ Pacu (audit:tester) > list
 ### Stormspotter
 >Herramienta para Azure que construye un attack graph de recursos y objetos de Azure/Azure AD, permitiendo visualizar superficie de ataque y oportunidades de pivoting. Etapa: enumeración interna, análisis de rutas de ataque y planeamiento de movimiento lateral.
 >
+Ingresamos a la web:
+http://TU_IP:7474 con el usuario neo4j y contraseña se encuentra ejecutando el comando `cat /home/admin/cloud-security-tools/state/stormspotter_neo4j_password.txt`. Importante recuerda abrir el puerto 7474 y 7687 en el Grupo de Seguridad de la Instancia
+
+####Fase de Recolección (Gather) y Carga de datos al contenedor Docker
+>Esta fase usa tus credenciales de AWS (el perfil pentesting2) para generar un archivo comprimido con toda la metadata de la cuenta. 
+
+>Ver mayor información de uso en https://github.com/Azure/Stormspotter
 
 ### PMapper
 >Herramienta para AWS IAM que modela usuarios y roles como un grafo dirigido para identificar riesgos de configuración, especialmente privilege escalation y caminos alternos de acceso a recursos. Etapa: análisis de permisos/IAM, modelado de rutas de ataque y preparación de escalamiento.
->
+```
+pmapper --help
+pmapper --profile pentesting2 graph create
+pmapper --profile pentesting2 analysis admins
+pmapper --profile pentesting2 analysis privileged-users
+```
+
+```
+# Instalar Graphviz
+sudo apt install -y graphviz
+# Generar la imagen del grafo
+pmapper --profile pentesting2 visualize --file red_iam_fintech.png
+```
 
 ### Cloudsplaining
 >Herramienta de assessment de IAM en AWS centrada en detectar violaciones al principio de least privilege y priorizar riesgos como data exfiltration, infrastructure modification, resource exposure y privilege escalation. Etapa: revisión de permisos, priorización de hallazgos IAM y pre-explotación.
 >
+```
+cloudsplaining --help
+```
 
 ### MicroBurst
 >Toolkit en PowerShell para Azure con scripts para discovery de servicios, auditoría de configuraciones débiles y acciones de post-explotación como credential dumping. Etapa: cubre varias, pero principalmente enumeración interna, auditoría de debilidades y post-explotación.
->
+
+> Ver mayor información en https://github.com/NetSPI/MicroBurst
 
 ### gcp_scanner
 >Scanner para GCP que ayuda a determinar qué nivel de acceso tienen ciertas credenciales y está pensado para evaluar el impacto de una comprometida de VM/container, una service account o una OAuth token leak. >
 Etapa: enumeración autenticada, impact assessment y post-compromiso/post-explotación en GCP.
->
+
+> Ver mayor información en https://github.com/google/gcp_scanner
