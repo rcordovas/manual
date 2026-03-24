@@ -32,10 +32,10 @@ aws configure --profile pentesting2
 AWS Access Key ID [None]: AKIAWVAULXXXXXXXXXX
 AWS Secret Access Key [None]: YUF5GBDQZdlSCbSo/HmgvU69XXXXXXXX/XXXX
 Default region name [None]: us-east-1
-Default output format [None]: html
+Default output format [None]: json
 ```
 
-#### Azure (Service Principal) - Opcional
+#### Azure (Service Principal) - Opcional: Solo si va usar Microsoft Azure
 >Se suele usar un Service Principal o el login interactivo.
 >
 ```
@@ -45,7 +45,7 @@ az login
 >> Nos va a salir el siguiente mensaje para navegar e ingresar el codigo (para mayor referencia ver el video adjunto):
 >> To sign in, use a web browser to open the page https://login.microsoft.com/device and enter the code EXXXXXC9W to authenticate.
 
-#### GCP (Service Account) - Opcional
+#### GCP (Service Account) - Opcional: Solo si va usar GCP
 >Se utiliza un archivo JSON de llave.
 ```
 #!/bin/bash
@@ -76,15 +76,40 @@ gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
 ### Usar cloud_enum
 >Herramienta OSINT multi-cloud para enumerar recursos públicos o semipúblicos en AWS, Azure y GCP, como buckets, blobs, Firebase, App Engine y Cloud Functions. Etapa: reconocimiento externo / discovery inicial del attack surface.
 >
+#### Busca buckets de S3, Azure Containers y GCP Buckets relacionados con una palabra clave
+```
+#Comandos de ejemplos:
+cloud_enum -k "data-clientes-peru" -qs
+cloud_enum -k "data-clientes-peru" -t 10
+cloud_enum -k "storagemyazure" 
+```
 
 ### CloudBrute
 >Herramienta de descubrimiento black-box para encontrar infraestructura, archivos y aplicaciones de un objetivo en varios proveedores cloud; está pensada para hallar buckets, apps y bases de datos expuestas sin necesidad de autenticarse. Etapa: reconocimiento externo y mapeo de superficie expuesta.
 >
+```
+#Comandos de ejemplos:
+CloudBrute -d ia-peru.online -w /home/admin/cloud-security-tools/src/cloud_enum/enum_tools/fuzz.txt -k peru -t 50
+```
 
 ### Prowler
 >Plataforma/herramienta de assessment de seguridad y compliance con cientos de checks listos para usar sobre entornos cloud. No está enfocada en explotar, sino en detectar hallazgos de configuración y postura. Etapa: evaluación de postura de seguridad / misconfiguraciones y también validación posterior al hardening.
 >
+```
+#Comandos de ejemplos:
+prowler aws --profile pentesting2 -M html
+```
 
+En caso tengan error con el perfil de aws creado, probar con estos comandos.
+```
+unset AWS_PROFILE AWS_DEFAULT_PROFILE
+export AWS_ACCESS_KEY_ID='TU_ACCESS_KEY'
+export AWS_SECRET_ACCESS_KEY='TU_SECRET_KEY'
+unset AWS_SESSION_TOKEN
+
+prowler aws
+```
+ 
 ### ScoutSuite
 >Herramienta de auditoría multi-cloud que usa las APIs del proveedor para recopilar configuración, resaltar áreas de riesgo y presentar una vista clara del attack surface. Etapa: enumeración interna autenticada y evaluación de postura/configuración.
 >
