@@ -1,6 +1,6 @@
 # Instrucciones de Pentesting en nube
 
-Para garantizar el correcto funcionamiento del laboratorio, se sugiere desplegar una instancia Debian con las siguientes especificaciones: tamaño t3.small o similar y, al menos, 20 GB de almacenamiento.
+Para garantizar el correcto funcionamiento del laboratorio, se sugiere desplegar una instancia Debian con las siguientes especificaciones: tamaño t3.medium o similar y, al menos, 20 GB de almacenamiento.
 
 ## Configuaciones previas
 
