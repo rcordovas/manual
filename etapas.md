@@ -6,8 +6,6 @@ Para garantizar el correcto funcionamiento del laboratorio, se sugiere desplegar
 
 ### Descargamos los scripts necesarios
 Una vez en la maquina, ingresamos como usuario root y luego descargamos los scripts necesarios.
-
-Luego descargamos de los scripts
 ```
 sudo su
 wget https://raw.githubusercontent.com/rcordovas/scripts/refs/heads/main/script.sh
@@ -31,7 +29,17 @@ Antes de ejecutar las herramientas, asegúrate de tener configurados los entorno
 >
 ```
 aws configure --profile pentesting2
-# Ingresa: Access Key, Secret Key, Region y Output format (json)
+AWS Access Key ID [None]: AKIAWVAULXXXXXXXXXX
+AWS Secret Access Key [None]: YUF5GBDQZdlSCbSo/HmgvU69XXXXXXXX/XXXX
+Default region name [None]: us-east-1
+Default output format [None]: html
+```
+
+#### Azure (Service Principal)
+>Se suele usar un Service Principal o el login interactivo.
+>
+```
+sudo apt-get install azure-cli
 ```
 
 ## Uso de Herramientas
