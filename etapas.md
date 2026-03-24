@@ -1,6 +1,6 @@
 # Instrucciones de Pentesting en nube
 
-Para garantizar el correcto funcionamiento del laboratorio, se sugiere desplegar una instancia Debian con las siguientes especificaciones: tamaño t3.medium o similar y, al menos, 20 GB de almacenamiento.
+Para garantizar el correcto funcionamiento del laboratorio, se sugiere desplegar una instancia Debian con las siguientes especificaciones: tamaño t3.medium o superior y, al menos, 20 GB de almacenamiento.
 
 ## Configuaciones previas
 
@@ -97,26 +97,48 @@ CloudBrute -d ia-peru.online -w /home/admin/cloud-security-tools/src/cloud_enum/
 >
 ```
 #Comandos de ejemplos:
-prowler aws --profile pentesting2 -M html
+prowler aws --profile pentesting2 -o ./prowler-results
 ```
 
 En caso tengan error con el perfil de aws creado, probar con estos comandos.
 ```
 unset AWS_PROFILE AWS_DEFAULT_PROFILE
-export AWS_ACCESS_KEY_ID='TU_ACCESS_KEY'
-export AWS_SECRET_ACCESS_KEY='TU_SECRET_KEY'
+export AWS_ACCESS_KEY_ID='AKIAWVAULXXXXXXXXXX'
+export AWS_SECRET_ACCESS_KEY='YUF5GBDQZdlSCbSo/HmgvU69XXXXXXXX/XXXX'
 unset AWS_SESSION_TOKEN
 
-prowler aws
+prowler aws -o ./prowler-results
 ```
  
 ### ScoutSuite
 >Herramienta de auditoría multi-cloud que usa las APIs del proveedor para recopilar configuración, resaltar áreas de riesgo y presentar una vista clara del attack surface. Etapa: enumeración interna autenticada y evaluación de postura/configuración.
 >
+```
+scout aws --profile pentesting2
+cd /home/admin/scoutsuite-report
+python3 -m http.server 80
+```
+>>Luego accede via web a http://ip_publica
+>>
 
 ### Pacu
 >Framework ofensivo para AWS diseñado para explotar fallas de configuración dentro de una cuenta; incluye módulos para privilege escalation, backdooring de usuarios IAM y abuso de funciones Lambda, entre otros. Etapa: explotación, post-explotación y escalamiento de privilegios.
 >
+```
+pacu
+What would you like to name this new session? audit
+Key alias [None]: tester
+Access key ID [None]: AKIAWVAULXXXXXXXXXX
+Secret access key [None]: YUF5GBDQZdlSCbSo/HmgvU69XXXXXXXX/XXXX
+Session token (Optional - for temp AWS keys only) [None]:
+Keys saved to database.
+
+```
+
+```
+Pacu (audit:tester) > list
+```
+>>Probamos al menos una prueba por cada módulo, por ejemplo con el comando `run ec2__enum` 
 
 ### Stormspotter
 >Herramienta para Azure que construye un attack graph de recursos y objetos de Azure/Azure AD, permitiendo visualizar superficie de ataque y oportunidades de pivoting. Etapa: enumeración interna, análisis de rutas de ataque y planeamiento de movimiento lateral.
