@@ -156,23 +156,24 @@ http://TU_IP:7474 con el usuario neo4j y contraseña se encuentra ejecutando el 
 ```
 pmapper --help
 pmapper --profile pentesting2 graph create
-pmapper --profile pentesting2 analysis admins
-pmapper --profile pentesting2 analysis privileged-users
+pmapper --profile pentesting2 analysis
+pmapper --profile pentesting2 visualize
+#Una posibilidad para ver la imagen generada es levantar un servidor web en el directorio actual
+python3 -m http.server 80
 ```
-
-```
-# Instalar Graphviz
-sudo apt install -y graphviz
-# Generar la imagen del grafo
-pmapper --profile pentesting2 visualize --file red_iam_fintech.png
-```
+>>Analizar la imagen generada.
 
 ### Cloudsplaining
 >Herramienta de assessment de IAM en AWS centrada en detectar violaciones al principio de least privilege y priorizar riesgos como data exfiltration, infrastructure modification, resource exposure y privilege escalation. Etapa: revisión de permisos, priorización de hallazgos IAM y pre-explotación.
 >
 ```
 cloudsplaining --help
+aws iam get-account-authorization-details --profile pentesting2 > account-details.json
+cloudsplaining scan --input-file account-details.json
+#Una posibilidad para ver en archivo html generado es levantar un servidor web en el directorio actual
+python3 -m http.server 80
 ```
+>>
 
 ### MicroBurst
 >Toolkit en PowerShell para Azure con scripts para discovery de servicios, auditoría de configuraciones débiles y acciones de post-explotación como credential dumping. Etapa: cubre varias, pero principalmente enumeración interna, auditoría de debilidades y post-explotación.
