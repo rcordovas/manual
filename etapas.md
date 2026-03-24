@@ -40,7 +40,10 @@ Default output format [None]: html
 >
 ```
 sudo apt-get install azure-cli
+az login
 ```
+>> Nos va a salir el siguiente mensaje para navegar e ingresar el codigo (para mayor referencia ver el video adjunto):
+>> To sign in, use a web browser to open the page https://login.microsoft.com/device and enter the code EKYYFXC9W to authenticate.
 
 ## Uso de Herramientas
 
