@@ -35,7 +35,7 @@ Default region name [None]: us-east-1
 Default output format [None]: html
 ```
 
-#### Azure (Service Principal)
+#### Azure (Service Principal) - Opcional
 >Se suele usar un Service Principal o el login interactivo.
 >
 ```
@@ -43,7 +43,33 @@ sudo apt-get install azure-cli
 az login
 ```
 >> Nos va a salir el siguiente mensaje para navegar e ingresar el codigo (para mayor referencia ver el video adjunto):
->> To sign in, use a web browser to open the page https://login.microsoft.com/device and enter the code EKYYFXC9W to authenticate.
+>> To sign in, use a web browser to open the page https://login.microsoft.com/device and enter the code EXXXXXC9W to authenticate.
+
+#### GCP (Service Account) - Opcional
+>Se utiliza un archivo JSON de llave.
+```
+#!/bin/bash
+
+sudo apt-get update
+sudo apt-get install -y apt-transport-https lsb-release ca-certificates curl gnupg
+
+sudo mkdir -p /etc/apt/keyrings
+curl -sLS https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/keyrings/microsoft.gpg > /dev/null
+sudo chmod go+r /etc/apt/keyrings/microsoft.gpg
+
+AZ_DIST=$(lsb_release -cs)
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ $AZ_DIST main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
+
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
+echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+
+sudo apt-get update
+sudo apt-get install -y azure-cli google-cloud-cli
+
+export GOOGLE_APPLICATION_CREDENTIALS="/ruta/a/tu/key.json"
+gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+```
+>> Puedes hacer clic en la cuenta de servicio correspondiente en la consola de Cloud y crear una nueva clave desde la pestaña CLAVES haciendo clic en Agregar clave. Una vez creada la clave, se descargará el archivo JSON.
 
 ## Uso de Herramientas
 
