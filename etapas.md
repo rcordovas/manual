@@ -2,12 +2,14 @@
 
 Para garantizar el correcto funcionamiento del laboratorio, se sugiere desplegar una instancia Debian con las siguientes especificaciones: tamaño t3.small o similar y, al menos, 20 GB de almacenamiento.
 
+# Configuaciones previas
+
 ## Descargamos los scripts necesarios
-Una vez en la maquina, ingresamos como usuario con el comando:
-sudo su
+Una vez en la maquina, ingresamos como usuario root y luego descargamos los scripts necesarios.
 
 Luego descargamos de los scripts
 ```
+sudo su
 wget https://raw.githubusercontent.com/rcordovas/scripts/refs/heads/main/script.sh
 wget https://raw.githubusercontent.com/rcordovas/scripts/refs/heads/main/script2.sh
 ```
@@ -15,10 +17,14 @@ wget https://raw.githubusercontent.com/rcordovas/scripts/refs/heads/main/script2
 ## Instalar los scripts 
 ```
 bash ./script.sh
-bash ./script.sh
+bash ./script2.sh
 ```
 
-## Usar cloud_enum
+Configuración de Perfiles (Tokens/Credenciales)
+
+# Uso de Herramientas
+
+### Usar cloud_enum
 >Herramienta OSINT multi-cloud para enumerar recursos públicos o semipúblicos en AWS, Azure y GCP, como buckets, blobs, Firebase, App Engine y Cloud Functions. Etapa: reconocimiento externo / discovery inicial del attack surface.
 >
 
@@ -55,7 +61,6 @@ bash ./script.sh
 >
 
 ## gcp_scanner
->
-Scanner para GCP que ayuda a determinar qué nivel de acceso tienen ciertas credenciales y está pensado para evaluar el impacto de una comprometida de VM/container, una service account o una OAuth token leak. >
+>Scanner para GCP que ayuda a determinar qué nivel de acceso tienen ciertas credenciales y está pensado para evaluar el impacto de una comprometida de VM/container, una service account o una OAuth token leak. >
 Etapa: enumeración autenticada, impact assessment y post-compromiso/post-explotación en GCP.
 >
