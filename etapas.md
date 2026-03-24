@@ -19,23 +19,19 @@ bash ./script.sh
 ```
 
 ## Usar cloud_enum
->
-Herramienta OSINT multi-cloud para enumerar recursos públicos o semipúblicos en AWS, Azure y GCP, como buckets, blobs, Firebase, App Engine y Cloud Functions. Etapa: reconocimiento externo / discovery inicial del attack surface.
+>Herramienta OSINT multi-cloud para enumerar recursos públicos o semipúblicos en AWS, Azure y GCP, como buckets, blobs, Firebase, App Engine y Cloud Functions. Etapa: reconocimiento externo / discovery inicial del attack surface.
 >
 
 ## CloudBrute
->
-Herramienta de descubrimiento black-box para encontrar infraestructura, archivos y aplicaciones de un objetivo en varios proveedores cloud; está pensada para hallar buckets, apps y bases de datos expuestas sin necesidad de autenticarse. Etapa: reconocimiento externo y mapeo de superficie expuesta.
+>Herramienta de descubrimiento black-box para encontrar infraestructura, archivos y aplicaciones de un objetivo en varios proveedores cloud; está pensada para hallar buckets, apps y bases de datos expuestas sin necesidad de autenticarse. Etapa: reconocimiento externo y mapeo de superficie expuesta.
 >
 
 ## Prowler
->
-Plataforma/herramienta de assessment de seguridad y compliance con cientos de checks listos para usar sobre entornos cloud. No está enfocada en explotar, sino en detectar hallazgos de configuración y postura. Etapa: evaluación de postura de seguridad / misconfiguraciones y también validación posterior al hardening.
+>Plataforma/herramienta de assessment de seguridad y compliance con cientos de checks listos para usar sobre entornos cloud. No está enfocada en explotar, sino en detectar hallazgos de configuración y postura. Etapa: evaluación de postura de seguridad / misconfiguraciones y también validación posterior al hardening.
 >
 
 ## ScoutSuite
->
-Herramienta de auditoría multi-cloud que usa las APIs del proveedor para recopilar configuración, resaltar áreas de riesgo y presentar una vista clara del attack surface. Etapa: enumeración interna autenticada y evaluación de postura/configuración.
+>Herramienta de auditoría multi-cloud que usa las APIs del proveedor para recopilar configuración, resaltar áreas de riesgo y presentar una vista clara del attack surface. Etapa: enumeración interna autenticada y evaluación de postura/configuración.
 >
 
 ## Pacu
@@ -43,23 +39,19 @@ Herramienta de auditoría multi-cloud que usa las APIs del proveedor para recopi
 >
 
 ## Stormspotter
->
-Herramienta para Azure que construye un attack graph de recursos y objetos de Azure/Azure AD, permitiendo visualizar superficie de ataque y oportunidades de pivoting. Etapa: enumeración interna, análisis de rutas de ataque y planeamiento de movimiento lateral.
+>Herramienta para Azure que construye un attack graph de recursos y objetos de Azure/Azure AD, permitiendo visualizar superficie de ataque y oportunidades de pivoting. Etapa: enumeración interna, análisis de rutas de ataque y planeamiento de movimiento lateral.
 >
 
 ## PMapper
->
-Herramienta para AWS IAM que modela usuarios y roles como un grafo dirigido para identificar riesgos de configuración, especialmente privilege escalation y caminos alternos de acceso a recursos. Etapa: análisis de permisos/IAM, modelado de rutas de ataque y preparación de escalamiento.
+>Herramienta para AWS IAM que modela usuarios y roles como un grafo dirigido para identificar riesgos de configuración, especialmente privilege escalation y caminos alternos de acceso a recursos. Etapa: análisis de permisos/IAM, modelado de rutas de ataque y preparación de escalamiento.
 >
 
 ## Cloudsplaining
->
-Herramienta de assessment de IAM en AWS centrada en detectar violaciones al principio de least privilege y priorizar riesgos como data exfiltration, infrastructure modification, resource exposure y privilege escalation. Etapa: revisión de permisos, priorización de hallazgos IAM y pre-explotación.
+>Herramienta de assessment de IAM en AWS centrada en detectar violaciones al principio de least privilege y priorizar riesgos como data exfiltration, infrastructure modification, resource exposure y privilege escalation. Etapa: revisión de permisos, priorización de hallazgos IAM y pre-explotación.
 >
 
 ## MicroBurst
->
-Toolkit en PowerShell para Azure con scripts para discovery de servicios, auditoría de configuraciones débiles y acciones de post-explotación como credential dumping. Etapa: cubre varias, pero principalmente enumeración interna, auditoría de debilidades y post-explotación.
+>Toolkit en PowerShell para Azure con scripts para discovery de servicios, auditoría de configuraciones débiles y acciones de post-explotación como credential dumping. Etapa: cubre varias, pero principalmente enumeración interna, auditoría de debilidades y post-explotación.
 >
 
 ## gcp_scanner
