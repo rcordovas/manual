@@ -1,6 +1,6 @@
 # Instrucciones de Pentesting en nube
 
-En una instancia debian de tamaño recomendado t3.small y tamaño de disco mínimo de 20GB.
+Para garantizar el correcto funcionamiento del laboratorio, se sugiere desplegar una instancia Debian con las siguientes especificaciones: tamaño t3.small o similar y, al menos, 20 GB de almacenamiento.
 
 ## Descargamos los scripts necesarios
 Una vez en la maquina, ingresamos como usuario con el comando:
